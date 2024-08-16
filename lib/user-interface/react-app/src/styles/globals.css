@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+    
+  }
+  
+  html,
+  body {
+    padding: 0;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+      Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    min-height: 100vh;
+    
+  }
+  
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  h1 {
+    margin: 2em 0;
+    padding: 0 0.5rem;
+    text-align: center;
+    font-size: 3rem;
+  }
+  
+  a {
+    color: #0950a2;
+    text-decoration: none;
+    position: relative;
+    
+  }
+  
+  a:hover {
+    opacity: 0.8;
+    color: #1cf6dd;
+  }
+  
+  p {
+    font-size: 2rem;
+  }
+  
+  /*.task-container {*/
+  /*  padding: 3rem 3rem;*/
+  /*  margin: 2em;*/
+  /*  display: flex;*/
+  /*  flex-flow: column nowrap;*/
+  /*  width: 100%;*/
+  /*}*/
+
+.task-container {
+  margin: 0 auto; /* Center the container */
+  display: flex;
+  flex-flow: column nowrap;
+  width: 100%;
+  box-sizing: border-box; /* Ensure padding is included in the element's total width and height */
+  overflow: auto; /* Prevent overflow issues */
+}
+
+  .carousel-item {
+  padding: 2em 3em;
+  color: #272343;
+  margin: 1rem;
+  border-radius: 20px;
+  background-color: #bae8e8;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+  .carousel-item-dark-mode {
+  padding: 2em 3em;
+  color: #272343;
+  margin: 1rem;
+  border-radius: 20px;
+  background-color: #bae8e8;
+  box-sizing: border-box;
+  box-shadow: 0 4px 8px 0 rgba(213, 241, 241, 0.3);
+}
+
+
+/*  .carousel-container {*/
+/*  display: flex;*/
+/*  align-items: center;*/
+/*  justify-content: space-between;*/
+/*}*/
+
+/*  .task-card-title {*/
+/*    font-size: 30px; !* Adjust the font size as needed *!*/
+/*}*/
