@@ -107,7 +107,7 @@ export abstract class Labels {
   }
 }
 
-export const CHATBOT_NAME = "EOTSS AWS Sandbox";
+export const CHATBOT_NAME = "Burnes Sandbox";
 
 export abstract class TaskOptions {
 // 3 task width, click through -> 7 in total, horrizontal slide, arrows on side 
