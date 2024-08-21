@@ -1,8 +1,12 @@
 @import "@cloudscape-design/global-styles/index.css";
 
+/* style added to side navigation */
+
 .side-navigation-container {
     padding-bottom: 3.125rem;
 }
+
+/* resize width for devices less then 700 width */
 @media screen and (max-width: 689px) {  
     .sandboxHomeText {
       font-size: 1.2rem;
@@ -21,6 +25,7 @@
     }
   }
 
+  /*margin added to info and side navigation */
   .m50{
     margin-bottom: 3.125rem;
   }
