@@ -101,6 +101,7 @@ export default function ChatInputPanel(props: ChatInputPanelProps) {
     useSpeechRecognition();
   // const [isReadOnly, setIsReadOnly] = useState<boolean>(!!props.initialPrompt);
 
+
   const [state, setState] = useState<ChatInputState>({
 
     // have it so the value of the input is either the primer or mt string
@@ -122,6 +123,8 @@ export default function ChatInputPanel(props: ChatInputPanelProps) {
   );
   const firstTimeRef = useRef<boolean>(false);
   const messageHistoryRef = useRef<ChatBotHistoryItem[]>([]);
+  const [isWideScreen, setIsWideScreen] = useState<boolean>(false);
+
 
     // const taskRouter = TaskPriming(props.initialPrompt);
     // const apiPrompt = taskRouter.prompt;
@@ -335,6 +338,21 @@ export default function ChatInputPanel(props: ChatInputPanelProps) {
 
     return () => {
       window.removeEventListener("scroll", onWindowScroll);
+    };
+  }, []);
+
+  useEffect(() => {
+    const initialIsWideScreen = window.innerWidth > 689;
+    setIsWideScreen(initialIsWideScreen);
+  
+    const handleResize = () => {
+      setIsWideScreen(window.innerWidth > 689);
+    };
+  
+    window.addEventListener("resize", handleResize);
+  
+    return () => {
+      window.removeEventListener("resize", handleResize);
     };
   }, []);
 
@@ -693,7 +711,7 @@ export default function ChatInputPanel(props: ChatInputPanelProps) {
             }}
             options={modelsOptions}
           />
-          {appContext?.config.rag_enabled && (
+          {appContext?.config.rag_enabled && isWideScreen && (
             <Select
               disabled={
                 props.running || !state.selectedModelMetadata?.ragSupported
