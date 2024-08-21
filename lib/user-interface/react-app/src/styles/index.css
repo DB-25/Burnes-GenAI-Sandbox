@@ -1,0 +1,35 @@
+@import "@cloudscape-design/global-styles/index.css";
+
+.side-navigation-container {
+    padding-bottom: 3.125rem;
+}
+@media screen and (max-width: 689px) {  
+    .sandboxHomeText {
+      font-size: 1.2rem;
+    }
+  }
+
+  @media screen and (max-width: 480px) {  
+    .sandboxHomeText {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .sandboxHomeText {
+        font-size: 1.2rem;
+    }
+  }
+
+  .m50{
+    margin-bottom: 3.125rem;
+  }
+
+  .p100{
+    padding-bottom: 6rem;
+  }
+
+ /* a[href="/chatbot/playground"]{
+    padding: 10px !important;
+ } */
+

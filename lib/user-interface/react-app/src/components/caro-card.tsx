@@ -8,6 +8,7 @@ import styles from "../../styles/globals.css";
 import {Mode} from "@cloudscape-design/global-styles";
 import { useEffect, useState } from "react";
 import { StorageHelper } from "../common/helpers/storage-helper";
+import { Link } from "@cloudscape-design/components";
 
 export interface ChatBotTaskCard {
   name: string;
@@ -38,18 +39,15 @@ const onFollow = useOnFollow();
       <Card bg="info">
         <Card.Header></Card.Header>
         <CardBody>
-          <Card.Title style={{ fontSize: "22px" }}>{props.cardTitle}</Card.Title>
+          <Card.Title style={{ fontSize: "22px", fontWeight: "700"}}>{props.cardTitle}</Card.Title>
           <Card.Text as= "p">{props.taskDescription}</Card.Text>
-          <Button
-            as="a"
+          <Link
             variant="primary"
             href={props.url}
-            active
-            onClick={(e) => e.stopPropagation()}
-            //onClick={handleFollow}
+            fontSize="heading-m"
             >
                 Try it &rarr;
-            </Button>
+            </Link>
         </CardBody>
       </Card>
       </div>

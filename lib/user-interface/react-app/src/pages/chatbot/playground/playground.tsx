@@ -2,8 +2,9 @@ import BaseAppLayout from "../../../components/base-app-layout";
 import Chat from "../../../components/chatbot/chat";
 
 import {Link, useParams} from "react-router-dom";
-import {Header, HelpPanel} from "@cloudscape-design/components";
+import {BreadcrumbGroup, Header, HelpPanel} from "@cloudscape-design/components";
 import {Alert} from "@cloudscape-design/components";
+import { CHATBOT_NAME } from "../../../common/constants";
 
 export default function Playground() {
     const {sessionId} = useParams();
@@ -11,6 +12,20 @@ export default function Playground() {
     // console.log(prompt + "testing #85")
     return (
         <BaseAppLayout
+            breadcrumbs={
+                <BreadcrumbGroup
+                items={[
+                    {
+                    text: CHATBOT_NAME,
+                    href: "/",
+                    },
+                    {
+                    text: "Playground",
+                    href: "/chatbot/playground",
+                    },
+                ]}
+                />
+            }
             info={
                 <HelpPanel header={<Header variant="h3">Using the chat</Header>}>
                     <p>
@@ -42,7 +57,7 @@ export default function Playground() {
                         upload images to use in the conversation.
                     </p>
                     <h3>Session history</h3>
-                    <p>
+                    <p className="p100">
                         All conversations are saved and can be later accessed via the{" "}
                         <Link to="/chatbot/sessions">Session</Link> in the navigation bar.
                     </p>

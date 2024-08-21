@@ -1,28 +1,27 @@
 import {
     ContentLayout,
     Header,
-    Cards,
     Container,
+    Cards,
     SpaceBetween,
     Link,
     BreadcrumbGroup,
+    Box,
+    Button,
+    CollectionPreferences,
+    Pagination,
+    TextFilter,
 } from "@cloudscape-design/components";
 import BaseAppLayout from "../components/base-app-layout";
 import RouterButton from "../components/wrappers/router-button";
 import useOnFollow from "../common/hooks/use-on-follow";
-import {CHATBOT_NAME, languageList} from "../common/constants";
-import {useHref} from "react-router-dom";
-import {TaskOptions} from "../common/constants";
-import TaskPriming from "../components/chatbot/task";
-import {v4 as uuidv4} from "uuid";
+import {CHATBOT_NAME} from "../common/constants";
 import CarouselNext from "../components/carousel";
-import styles from "../../styles/globals.css";
-import {StorageHelper} from "../common/helpers/storage-helper.ts";
-import {Mode} from "@cloudscape-design/global-styles";
-import { useState, useEffect } from "react";
+// import { useNavigate } from "react-router-dom";
 
 export default function Welcome({theme}) {
     const onFollow = useOnFollow();
+    // const navigate = useNavigate();
 
     return (
         <BaseAppLayout
@@ -54,13 +53,15 @@ export default function Welcome({theme}) {
                                 </RouterButton>
                             }
                         >
-                            Sandbox Home
+                            <span className="sandboxHomeText">Sandbox Home</span>
                         </Header>
                     }
                 >
                     <SpaceBetween size="l">
-                        <Cards
+                        <Cards 
+                            // onSelectionChange={(event)=>navigate(event.detail.selectedItems[0].href)}
                             cardDefinition={{
+                                
                                 header: (item) => (
                                     <Link
                                         external={item.external}
@@ -73,6 +74,7 @@ export default function Welcome({theme}) {
                                 sections: [
                                     {
                                         content: (item) => (
+                                           
                                             <div style={{minHeight: '200px'}}>
                                                 <img
                                                     src={item.img}
@@ -85,13 +87,14 @@ export default function Welcome({theme}) {
                                                     }}
                                                 />
                                             </div>
+                                            
                                         ),
                                     },
                                     {
                                         content: (item) => (
-                                            <div>
+                                            
                                                 <div>{item.description}</div>
-                                            </div>
+                                           
                                         ),
                                     },
                                     {
@@ -102,6 +105,7 @@ export default function Welcome({theme}) {
                                 ],
                             }}
                             cardsPerRow={[{cards: 1}, {minWidth: 700, cards: 3}]}
+                            
                             items={[
                                 {
                                     name: "Chatbot",
@@ -130,7 +134,11 @@ export default function Welcome({theme}) {
                                         "Explore models with AWS Bedrock, Claude, and Llama",
                                 },
                             ]}
+                            // selectionType="single"
+
                         />
+
+
 
                         <Header
                             variant="h1"
@@ -142,16 +150,13 @@ export default function Welcome({theme}) {
                         <div className="task-container">
                             <CarouselNext theme={theme}></CarouselNext>
                         </div>
-
-                        <Container
-                            header={
-                                <Header
-                                    variant="h2"
-                                    description="Explore our comprehensive library of learning materials designed to enhance your skills in generative AI, prompt engineering, and other cutting-edge AI technologies. Dive into tutorials, guides, and interactive courses tailored for all levels, from beginners to advanced practitioners."
-                                >
-                                    Learn More
-                                </Header>
-                            }>
+                        
+                        <Header
+                            variant="h2"
+                            description="Explore our comprehensive library of learning materials designed to enhance your skills in generative AI, prompt engineering, and other cutting-edge AI technologies. Dive into tutorials, guides, and interactive courses tailored for all levels, from beginners to advanced practitioners."
+                        >
+                            Learn More
+                       </Header>
                             <Cards
                                 cardDefinition={{
                                     header: (item) => (
@@ -226,7 +231,6 @@ export default function Welcome({theme}) {
                                     },
                                 ]}
                             />
-                        </Container>
                     </SpaceBetween>
                 </ContentLayout>
             }

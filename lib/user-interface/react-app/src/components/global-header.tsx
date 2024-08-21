@@ -56,7 +56,7 @@ export default function GlobalHeader({theme, setTheme}) {
       <TopNavigation
         identity={{
           href: "/",
-          title: "Welcome to the AI Sandbox" ,
+          title: "AI Sandbox" ,
           logo: { src: "/images/stateseal-color.png", alt: { CHATBOT_NAME } + " Logo" },
         }}
         utilities={[

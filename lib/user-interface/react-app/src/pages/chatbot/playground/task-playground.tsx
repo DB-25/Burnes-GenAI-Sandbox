@@ -93,7 +93,7 @@ export default function TaskPlayground() {
             upload images to use in the conversation.
           </p>
           <h3>Session history</h3>
-          <p>
+          <p className="m50">
             All conversations are saved and can be later accessed via the{" "}
             <Link to="/chatbot/sessions">Session</Link> in the navigation bar.
           </p>
