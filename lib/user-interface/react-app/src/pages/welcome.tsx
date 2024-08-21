@@ -17,11 +17,9 @@ import RouterButton from "../components/wrappers/router-button";
 import useOnFollow from "../common/hooks/use-on-follow";
 import {CHATBOT_NAME} from "../common/constants";
 import CarouselNext from "../components/carousel";
-// import { useNavigate } from "react-router-dom";
 
 export default function Welcome({theme}) {
     const onFollow = useOnFollow();
-    // const navigate = useNavigate();
 
     return (
         <BaseAppLayout
@@ -59,7 +57,6 @@ export default function Welcome({theme}) {
                 >
                     <SpaceBetween size="l">
                         <Cards 
-                            // onSelectionChange={(event)=>navigate(event.detail.selectedItems[0].href)}
                             cardDefinition={{
                                 
                                 header: (item) => (
@@ -125,16 +122,9 @@ export default function Welcome({theme}) {
                                     description:
                                         "Compare how models respond to the same prompt",
                                 },
-                                {
-                                    name: "Models",
-                                    type: " ",
-                                    href: "/chatbot/models",
-                                    img: "/images/welcome/modelBg.png",
-                                    description:
-                                        "Explore models with AWS Bedrock, Claude, and Llama",
-                                },
+                             
                             ]}
-                            // selectionType="single"
+                         
 
                         />
 
