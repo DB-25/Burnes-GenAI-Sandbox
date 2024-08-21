@@ -546,13 +546,11 @@ export default function MultiChat() {
           );
         })}
       </SpaceBetween>
-      { !enabled && 
-        (
-        <div className={styles.alert_text}>
-          <center>Complete the model selection</center>
-        </div>
-      )
-      }
+      {chatSessions.some((chatSession) => chatSession.model === null || chatSession.model === undefined) && (
+      <div className={styles.alert_text}>
+        <center>Complete the model selection</center>
+      </div>
+    )}
       <div className={styles.input_container}>
         <MultiChatInputPanel
           running={chatSessions.some((c) => c.running)}
