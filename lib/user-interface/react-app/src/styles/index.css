@@ -1,0 +1,21 @@
+@import "@cloudscape-design/global-styles/index.css";
+
+.side-navigation-container {
+    padding-bottom: 3.125rem;
+}
+
+.sandboxHomeText{
+    
+}
+
+@media screen and (max-width: 689px) {  
+    .sandboxHomeText {
+      font-size: 1.2rem;
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .sandboxHomeText {
+        font-size: 1.2rem;
+    }
+  }

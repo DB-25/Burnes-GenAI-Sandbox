@@ -169,7 +169,7 @@ export default function NavigationPanel() {
     };
 
     return (
-        <div>
+        <div className="side-navigation-container">
             <SideNavigation
                 onFollow={onFollow}
                 onChange={onChange}

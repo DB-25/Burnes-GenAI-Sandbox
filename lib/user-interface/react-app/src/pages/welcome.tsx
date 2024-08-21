@@ -54,7 +54,7 @@ export default function Welcome({theme}) {
                                 </RouterButton>
                             }
                         >
-                            Sandbox Home
+                            <span className="sandboxHomeText">Sandbox Home</span>
                         </Header>
                     }
                 >

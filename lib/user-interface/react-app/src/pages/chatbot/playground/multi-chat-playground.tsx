@@ -1,13 +1,28 @@
 import BaseAppLayout from "../../../components/base-app-layout";
 import MultiChat from "../../../components/chatbot/multi-chat";
-import { Header, HelpPanel } from "@cloudscape-design/components";
+import { BreadcrumbGroup, Header, HelpPanel } from "@cloudscape-design/components";
 import { Link } from "react-router-dom";
 import {Alert} from "@cloudscape-design/components";
+import { CHATBOT_NAME } from "../../../common/constants";
 
 
 export default function MultiChatPlayground() {
   return (
     <BaseAppLayout
+    breadcrumbs={
+      <BreadcrumbGroup
+        items={[
+          {
+            text: CHATBOT_NAME,
+            href: "/",
+          },
+          {
+            text: "Multichat Playground",
+            href: "/chatbot/multichat",
+          },
+        ]}
+      />
+    }
       info={
         <HelpPanel header={<Header variant="h3">Using the chat</Header>}>
           <p>
