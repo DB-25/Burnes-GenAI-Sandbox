@@ -25,7 +25,11 @@
     margin-bottom: 3.125rem;
   }
 
-  .m100{
-    margin-bottom: 6.25rem;
+  .p100{
+    padding-bottom: 6rem;
   }
+
+ /* a[href="/chatbot/playground"]{
+    padding: 10px !important;
+ } */
 
