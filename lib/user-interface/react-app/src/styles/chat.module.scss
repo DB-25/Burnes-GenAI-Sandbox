@@ -2,6 +2,7 @@
 
 .chat_container {
   margin-bottom: -40px;
+  margin-top: 10px;
   min-height: calc(100vh - 96px);
   display: flex;
   flex-direction: column;
@@ -29,6 +30,14 @@
 .welcome_text {
   color: awsui.$color-text-body-default;
   font-size: 3rem;
+  font-weight: bolder;
+  opacity: 0.4;
+}
+
+.alert_text {
+  color: awsui.$color-text-body-default;
+  padding-top: 2rem;
+  font-size: 1.5rem;
   font-weight: bolder;
   opacity: 0.4;
 }
@@ -152,10 +161,11 @@
 
 @container (max-width: 689px) {
   .input_controls {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: awsui.$space-scaled-xs;
+    align-items: flex-start; 
+    justify-content: flex-start; 
   }
 }
 

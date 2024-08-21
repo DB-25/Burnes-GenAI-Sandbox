@@ -12,8 +12,6 @@ import { ApiClient } from "../../common/api-client/api-client";
 import ChatMessage from "./chat-message";
 import ChatInputPanel, { ChatScrollState } from "./chat-input-panel";
 import styles from "../../styles/chat.module.scss";
-import { CHATBOT_NAME, TaskOptions } from "../../common/constants";
-import TaskPriming from "./task";
 
 export default function Chat(props: { sessionId?: string, prompt?: string}) {
   const appContext = useContext(AppContext);
@@ -167,9 +165,6 @@ export default function Chat(props: { sessionId?: string, prompt?: string}) {
         ))}
       </SpaceBetween>
       <div className={styles.welcome_text}>
-        {messageHistory.length == 0 && !session?.loading && (
-          <center>{CHATBOT_NAME}</center>
-        )}
         {session?.loading && (
           <center>
             <StatusIndicator type="loading">Loading session</StatusIndicator>

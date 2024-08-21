@@ -109,6 +109,7 @@ export default function MultiChat() {
   const [readyState, setReadyState] = useState<ReadyState>(
     ReadyState.UNINSTANTIATED
   );
+  const [isWideScreen, setIsWideScreen] = useState<boolean>(false);
 
   useEffect(() => {
     if (!appContext) return;
@@ -323,6 +324,21 @@ export default function MultiChat() {
     }
   }, [chatSessions]);
 
+  useEffect(() => {
+    const initialIsWideScreen = window.innerWidth > 689;
+    setIsWideScreen(initialIsWideScreen);
+
+    const handleResize = () => {
+      setIsWideScreen(window.innerWidth > 689);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const messages = transformMessages(chatSessions);
   const workspaceOptions = [
     ...workspaceDefaultOptions,
@@ -484,7 +500,7 @@ export default function MultiChat() {
                     }}
                   />
                 )}
-                {appContext?.config.rag_enabled && true && (
+                {appContext?.config.rag_enabled && isWideScreen && (
                   <Select
                     disabled={!enableAddModels}
                     loadingText="Loading workspaces (might take few seconds)..."
@@ -530,6 +546,13 @@ export default function MultiChat() {
           );
         })}
       </SpaceBetween>
+      { !enabled && 
+        (
+        <div className={styles.alert_text}>
+          <center>Complete the model selection</center>
+        </div>
+      )
+      }
       <div className={styles.input_container}>
         <MultiChatInputPanel
           running={chatSessions.some((c) => c.running)}
