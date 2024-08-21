@@ -57,7 +57,7 @@ export default function Playground() {
                         upload images to use in the conversation.
                     </p>
                     <h3>Session history</h3>
-                    <p>
+                    <p className="m100">
                         All conversations are saved and can be later accessed via the{" "}
                         <Link to="/chatbot/sessions">Session</Link> in the navigation bar.
                     </p>

@@ -41,8 +41,8 @@ export default function MultiChatPlayground() {
             passages that might have been retrieved from the RAG storage.
           </p>
           <h3>Session history</h3>
-          <p>
-            All individual conversations are saved and can be later accessed via
+          <p className="m50">
+          All individual conversations are saved and can be later accessed via
             the <Link to="/chatbot/sessions">Session</Link> in the navigation
             bar. For example, if you have 3 chats, there will be 3 sessions
             saved in the history.
