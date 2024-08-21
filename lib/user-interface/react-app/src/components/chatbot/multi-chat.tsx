@@ -531,19 +531,65 @@ export default function MultiChat() {
             return null;
           }
 
-          return (
-            <ColumnLayout columns={chatSessions.length} key={idx}>
-              {val.map((message, idx) => (
-                <ChatMessage
-                  key={idx}
-                  message={message}
-                  showMetadata={showMetadata}
-                  onThumbsUp={(userFeedbackComment : string) => handleFeedback(1, idx, message, val, userFeedbackComment )}
-                  onThumbsDown={(userFeedbackComment : string) => handleFeedback(0, idx, message, val, userFeedbackComment)}
-                />
-              ))}
-            </ColumnLayout>
-          );
+          if(isWideScreen){
+            return (
+              <ColumnLayout columns={chatSessions.length} key={idx}>
+                {val.map((message, idx) => (
+                  <ChatMessage
+                    key={idx}
+                    message={message}
+                    showMetadata={showMetadata}
+                    onThumbsUp={(userFeedbackComment : string) => handleFeedback(1, idx, message, val, userFeedbackComment )}
+                    onThumbsDown={(userFeedbackComment : string) => handleFeedback(0, idx, message, val, userFeedbackComment)}
+                  />
+                ))}
+              </ColumnLayout>
+            );
+          }
+          else{
+            return (
+              <ColumnLayout columns={chatSessions.length} key={idx}>
+                {val.map((message, idx) => (
+                  <div key={idx}>
+                    {idx === 0 && message.type === 'human' && (
+                      <ChatMessage
+                        key={idx}
+                        message={message}
+                        showMetadata={showMetadata}
+                        onThumbsUp={(userFeedbackComment: string) =>
+                          handleFeedback(1, idx, message, val, userFeedbackComment)
+                        }
+                        onThumbsDown={(userFeedbackComment: string) =>
+                          handleFeedback(0, idx, message, val, userFeedbackComment)
+                        }
+                      />
+                    )}
+            
+                    {message.type !== 'human' && (
+                      <>
+                        {chatSessions[idx].model?.label && (
+                          <div>
+                            <h3>{chatSessions[idx].model.label}</h3>
+                          </div>
+                        )}
+                        <ChatMessage
+                          key={idx}
+                          message={message}
+                          showMetadata={showMetadata}
+                          onThumbsUp={(userFeedbackComment: string) =>
+                            handleFeedback(1, idx, message, val, userFeedbackComment)
+                          }
+                          onThumbsDown={(userFeedbackComment: string) =>
+                            handleFeedback(0, idx, message, val, userFeedbackComment)
+                          }
+                        />
+                      </>
+                    )}
+                  </div>
+                ))}
+              </ColumnLayout>
+            );            
+          }
         })}
       </SpaceBetween>
       {chatSessions.some((chatSession) => chatSession.model === null || chatSession.model === undefined) && (
