@@ -101,7 +101,7 @@ export default function Welcome({theme}) {
                                     },
                                 ],
                             }}
-                            cardsPerRow={[{cards: 1}, {minWidth: 700, cards: 3}]}
+                            cardsPerRow={[{cards: 1}, {minWidth: 992, cards: 2}]}
                             
                             items={[
                                 {
