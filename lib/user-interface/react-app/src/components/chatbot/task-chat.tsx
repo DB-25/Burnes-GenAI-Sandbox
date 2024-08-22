@@ -175,9 +175,7 @@ return (
       ))}
     </SpaceBetween>
     <div className={styles.welcome_text}>
-      {messageHistory.length == 0 && !session?.loading && (
-        <center>{CHATBOT_NAME}</center>
-      )}
+      {messageHistory.length == 0 && !session?.loading}
       {session?.loading && (
         <center>
           <StatusIndicator type="loading">Loading session</StatusIndicator>
