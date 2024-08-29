@@ -110,6 +110,7 @@ export default function MultiChat() {
     ReadyState.UNINSTANTIATED
   );
   const [isWideScreen, setIsWideScreen] = useState<boolean>(false);
+  const [selectedModel, setSelectedModel] = useState<string | null>(null);
 
   useEffect(() => {
     if (!appContext) return;
@@ -546,50 +547,73 @@ export default function MultiChat() {
               </ColumnLayout>
             );
           }
-          else{
-            return (
-              <ColumnLayout columns={chatSessions.length} key={idx}>
-                {val.map((message, idx) => (
-                  <div key={idx}>
-                    {idx === 0 && message.type === 'human' && (
-                      <ChatMessage
-                        key={idx}
-                        message={message}
-                        showMetadata={showMetadata}
-                        onThumbsUp={(userFeedbackComment: string) =>
-                          handleFeedback(1, idx, message, val, userFeedbackComment)
-                        }
-                        onThumbsDown={(userFeedbackComment: string) =>
-                          handleFeedback(0, idx, message, val, userFeedbackComment)
-                        }
-                      />
-                    )}
-            
-                    {message.type !== 'human' && (
-                      <>
-                        {chatSessions[idx].model?.label && (
-                          <div>
-                            <h3>{chatSessions[idx].model.label}</h3>
-                          </div>
-                        )}
-                        <ChatMessage
-                          key={idx}
-                          message={message}
-                          showMetadata={showMetadata}
-                          onThumbsUp={(userFeedbackComment: string) =>
-                            handleFeedback(1, idx, message, val, userFeedbackComment)
-                          }
-                          onThumbsDown={(userFeedbackComment: string) =>
-                            handleFeedback(0, idx, message, val, userFeedbackComment)
-                          }
-                        />
-                      </>
-                    )}
-                  </div>
-                ))}
-              </ColumnLayout>
-            );            
-          }
+
+
+
+
+
+
+else {
+  const firstModelLabel = chatSessions.length > 0 ? chatSessions[0].model?.label ?? null : null;
+  
+  return (
+    <div key={idx} className={styles.mobileLayout}>
+      {idx === 0 && (
+        <div className={styles.buttonContainer}>
+          {chatSessions.map((session, sessionIdx) => (
+            <Button
+              key={sessionIdx}
+              variant={(selectedModel === session.model?.label) || (selectedModel === null && session.model?.label===firstModelLabel) ? 'primary' : 'normal'}
+              onClick={() => setSelectedModel(session.model?.label || null)}
+            >
+              {session.model?.label || `Model ${sessionIdx + 1}`}
+            </Button>
+          ))}
+        </div>
+      )}
+      
+      <div className={styles.messageContainer}>
+        {val.map((message, messageIdx) => (
+          <div key={messageIdx}>
+            {messageIdx === 0 && message.type === 'human' && (
+              <ChatMessage
+                message={message}
+                showMetadata={showMetadata}
+                onThumbsUp={(userFeedbackComment: string) =>
+                  handleFeedback(1, messageIdx, message, val, userFeedbackComment)
+                }
+                onThumbsDown={(userFeedbackComment: string) =>
+                  handleFeedback(0, messageIdx, message, val, userFeedbackComment)
+                }
+              />
+            )}
+    
+            {message.type !== 'human' && ((selectedModel === chatSessions[messageIdx].model?.label) || (selectedModel === null && chatSessions[messageIdx].model?.label === firstModelLabel)) && (
+              <ChatMessage
+                message={message}
+                showMetadata={showMetadata}
+                onThumbsUp={(userFeedbackComment: string) =>
+                  handleFeedback(1, messageIdx, message, val, userFeedbackComment)
+                }
+                onThumbsDown={(userFeedbackComment: string) =>
+                  handleFeedback(0, messageIdx, message, val, userFeedbackComment)
+                }
+              />
+            )}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
+
+
+
+
+
+
         })}
       </SpaceBetween>
       {chatSessions.some((chatSession) => chatSession.model === null || chatSession.model === undefined) && (
