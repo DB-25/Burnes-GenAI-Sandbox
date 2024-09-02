@@ -1,8 +1,8 @@
-# EOTSS GenAI Sandbox README
+# Burnes GenAI Sandbox README
 
 ## Overview
 
-The GenAI Sandbox is designed to empower Massachusetts state agency employees with varying technical proficiencies to effectively utilize AI technologies. It addresses the challenges of accessibility, system integration, and ethical concerns while enhancing operational efficiency, service delivery, and innovation within public sector operations.
+The GenAI Sandbox is designed to empower users with varying technical proficiencies to effectively utilize AI technologies. It addresses the challenges of accessibility, system integration, and ethical concerns while enhancing operational efficiency, service delivery, and innovation within public sector operations.
 
 ## Sandbox Features
 
